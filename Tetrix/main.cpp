@@ -2,15 +2,15 @@
 #include <stdio.h>
 #define X 5
 #define Y 13
-void RellenarTablero(int tablero[Y][X]);
+void IniciaTablero(int tablero[Y][X]);
 void PintarTablero(int tablero[Y][X]);
-
+void Fun_figuras();
 
 int main(){
     int tablero[Y][X];
-    RellenarTablero(tablero);
+    IniciaTablero(tablero);
     PintarTablero(tablero);
-
+     
 
 
 
@@ -23,7 +23,7 @@ int main(){
 
 
 
-void RellenarTablero(int tablero[Y][X]){
+void IniciaTablero(int tablero[Y][X]){
 
     for (int fila=0; fila < Y; fila++){
         for( int columna=0; columna < X; columna++ )
@@ -40,7 +40,7 @@ void PintarTablero(int tablero[Y][X]){
         printf("\n");
     }
 }
-void Figuras(char figuras[7][4][5][5]){ /*7 Tipos, 4 Fosiciones, 5 filas, 5columnas*/
+void Fun_figuras(){ /*7 Tipos, 4 Posiciones, 5 filas, 5 columnas*/
     char figuras [7][4][5][5]={
     {/*Cuadrado*/
        {
@@ -261,4 +261,11 @@ void Figuras(char figuras[7][4][5][5]){ /*7 Tipos, 4 Fosiciones, 5 filas, 5colum
       }
       }
     };
+}
+
+void insertar(){
+
+
+
+
 }
