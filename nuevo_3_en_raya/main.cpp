@@ -31,23 +31,24 @@ void preguntar(int turno, int *f,int  *c){
     scanf(" %i , %i", f, c);
 
 }
-/*
-void comprobar(int turno, char tablero[N][N]){
-    for (int a=0; a<N; a++){
-        if (tablero[a][0] == tablero[a][1] && tablero[a][1] == tablero[a][2] && tablero[a][2] ==  'X' || 'O' )
-            printf("Jugador %i, has ganado!!",turno % 2 + 1);
-        if (tablero[0][a] == tablero[1][a] && tablero[1][a]== tablero[2][a] && tablero[2][a] == 'X' || 'O')
-            printf("Jugador %i, has ganado!!",turno % 2 + 1);
-        }
-        if (tablero[0][0] == tablero[1][1] && tablero[1][1]== tablero[2][2] &&  tablero[2][2] == 'X' || 'O')
-            printf("Jugador %i, has ganado!!",turno % 2 + 1);
 
-        if (tablero[0][1] == tablero[1][1] && tablero[1][1]== tablero[2][1] && tablero[2][1] == 'X' || 'O')
+void comprobar(int turno, char tablero[N][N]){
+ 	for(int f=0; f<3; f++){  
+        	if (tablero[f][0] != ' '){
+        	if (tablero[f][0] == tablero[f][1] && tablero[f][0] == tablero[f][2])
+            	printf("Jugador %i, has ganado!!",turno % 2 + 1);
+        	if (tablero[0][f] == tablero[1][f] && tablero[1][f]== tablero[2][f])
+            	printf("Jugador %i, has ganado!!",turno % 2 + 1);	
+        	if (tablero[0][0] == tablero[1][1] && tablero[1][1]== tablero[2][2])
+           	 printf("Jugador %i, has ganado!!",turno % 2 + 1);
+	}}
+	    
+       /* if (tablero[0][1] == tablero[1][1] && tablero[1][1]== tablero[2][1] && tablero[2][1] == 'X' || 'O')
             printf("Jugador %i, has ganado!!", turno % 2 +1);
         if (tablero[1][0] == tablero[1][1] && tablero[1][1]== tablero[1][2] &&  tablero[1][2] == 'X' || 'O')
             printf("Jugador %i, has ganado!!", turno % 2 +1);
-
-    }*/
+*/
+    }
 int main(){
 
     int turno = 0;
@@ -62,8 +63,7 @@ int main(){
             tablero[f][c] = simbolo[turno % 2];
         else
             turno--;
-
-      // comprobar(turno, tablero);
+	comprobar(turno, tablero);
     }
 
 
