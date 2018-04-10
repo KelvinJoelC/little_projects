@@ -33,83 +33,58 @@ void preguntar(int turno, int *f,int  *c){
 
 }
 
-void comprobar(int turno, char tablero[N][N]){
+int ganador(int turno, char tablero[N][N], int *finish){
+    system("clear");
+    imprimir(tablero);
+    printf("\n");
+    printf("Jugador %i, has ganado!!",turno % 2 + 1);
+    *finish = 1;
+}
 
-        	if (tablero[0][0] != ' '){
-        	if (tablero[0][0] == tablero[0][1] && tablero[0][0] == tablero[0][2]){
-		system("clear");
-		imprimir(tablero);
-		printf("\n");
-            	printf("Jugador %i, has ganado!!",turno % 2 + 1);}
-        	if (tablero[0][0] == tablero[1][0] && tablero[1][0]== tablero[2][0]){
-		system("clear");
-		imprimir(tablero);
-		printf("\n");
-            	printf("Jugador %i, has ganado!!",turno % 2 + 1);}
-        	if (tablero[0][0] == tablero[1][1] && tablero[1][1]== tablero[2][2]){
-		system("clear");
-		imprimir(tablero);
-		printf("\n");
-            	printf("Jugador %i, has ganado!!",turno % 2 + 1);}
-		}
-		if (tablero[0][1] != ' '){
-        	if (tablero[0][1] == tablero[0][0] && tablero[0][0] == tablero[0][2]){
-		system("clear");
-		imprimir(tablero);
-		printf("\n");
-            	printf("Jugador %i, has ganado!!",turno % 2 + 1);}
-        	if (tablero[0][1] == tablero[1][1] && tablero[0][1]== tablero[2][1]){
-		system("clear");
-		imprimir(tablero);
-		printf("\n");
-            	printf("Jugador %i, has ganado!!",turno % 2 + 1);}
-		}
-        	if (tablero[1][2] != ' '){
-        	if (tablero[1][2] == tablero[0][2] && tablero[1][2] == tablero[2][2]){
-		system("clear");
-		imprimir(tablero);
-		printf("\n");
-            	printf("Jugador %i, has ganado!!",turno % 2 + 1);}
-        	if (tablero[1][2] == tablero[1][1] && tablero[1][2]== tablero[1][0]){
-		system("clear");
-		imprimir(tablero);
-		printf("\n");
-            	printf("Jugador %i, has ganado!!",turno % 2 + 1);}
-        	if (tablero[0][2] == tablero[1][1] && tablero[1][1]== tablero[2][0]){
-		system("clear");
-		imprimir(tablero);
-		printf("\n");
-            	printf("Jugador %i, has ganado!!",turno % 2 + 1);}
-		}	
-		if (tablero[2][2] != ' '){
-        	if (tablero[2][2] == tablero[2][1] && tablero[2][2] == tablero[2][0]){
-		system("clear");
-		imprimir(tablero);
-		printf("\n");
-            	printf("Jugador %i, has ganado!!",turno % 2 + 1);}
-		}
+void comprobar(int turno, char tablero[N][N], int *finish){
+
+    if (tablero[0][0] != ' '){
+        if (tablero[0][0] == tablero[0][1] && tablero[0][0] == tablero[0][2])
+            ganador(turno,tablero,finish);
+        if (tablero[0][0] == tablero[1][0] && tablero[1][0]== tablero[2][0])
+            ganador(turno,tablero,finish);
+        if (tablero[0][0] == tablero[1][1] && tablero[1][1]== tablero[2][2])
+            ganador(turno,tablero,finish);
     }
+    if (tablero[0][1] != ' ')
+        if (tablero[0][1] == tablero[1][1] && tablero[0][1]== tablero[2][1])
+            ganador(turno,tablero,finish);
+
+    if (tablero[1][2] != ' '){
+        if (tablero[1][2] == tablero[0][2] && tablero[1][2] == tablero[2][2])
+            ganador(turno,tablero,finish);
+        if (tablero[1][2] == tablero[1][1] && tablero[1][2]== tablero[1][0])
+            ganador(turno,tablero,finish);
+    }
+    if (tablero[2][1] != ' ')
+        if (tablero[2][2] == tablero[2][1] && tablero[2][2] == tablero[2][0])
+            ganador(turno,tablero,finish);
+}
 
 int main(){
 
     int turno = 0;
-    bool finish;
+    int finish=0;
     int f,c;
     char tablero[N][N];
 
     limpiar(tablero);
     do{
-    for (turno=0; turno<10; turno++){
-        imprimir(tablero);
-        preguntar(turno, &f, &c);
-        if  (tablero[f][c] == ' ')
-            tablero[f][c] = simbolo[turno % 2];
-        else
-            turno--;
-	comprobar(turno, tablero);	
+            imprimir(tablero);
+            preguntar(turno, &f, &c);
+            if  (tablero[f][c] == ' ')
+                tablero[f][c] = simbolo[turno % 2];
+            else
+                turno--;
+             turno++;
+             comprobar(turno, tablero,finish);
     }
-    }while(finish=true)
-
-
-    return EXIT_SUCCESS;
+    while(finish = 0);
+  
+   return EXIT_SUCCESS;
 }
