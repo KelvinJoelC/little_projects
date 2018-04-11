@@ -7,6 +7,7 @@
 #define J 2
 
 const char simbolo[J] = { 'X', 'O' };
+bool finish = false;
 
 void limpiar(char tablero[N][N]){
 
@@ -38,6 +39,7 @@ void ganador(int turno, char tablero[N][N]){
 	imprimir(tablero);
 	printf("\n");
 	printf("Jugador %i, has ganado!!\n",turno % 2 + 1);
+        finish = true;
 }
 
 void comprobar(int turno, char tablero[N][N]){
@@ -68,7 +70,6 @@ void comprobar(int turno, char tablero[N][N]){
 int main(){
 
 	int turno = 0;
-	int finish=0;
 	int f,c;
 	char tablero[N][N];
 
@@ -84,6 +85,6 @@ int main(){
 		turno++;
 		comprobar(turno, tablero);
 		
-	}while (turno < 9);
+	}while (turno < 9 && !finish);
 	return EXIT_SUCCESS;
 }
