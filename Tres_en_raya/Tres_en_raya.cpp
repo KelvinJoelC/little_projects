@@ -28,9 +28,9 @@ void imprimir(char tablero[N][N]){
 }
 
 void preguntar(int turno, int *f,int  *c){
-
+	
 	printf("Jugador %i: \n", turno % 2 + 1);
-	printf("Introduce las coordenadas: fila,columna (0,0) ");
+	printf("Introduce las coordenadas: fila,columna x,y del 0-2 ");
 	scanf(" %i , %i", f, c);
 
 }
@@ -74,8 +74,8 @@ int main(){
 	char tablero[N][N];
 
 	limpiar(tablero);
-	imprimir(tablero);
 	do {	
+	imprimir(tablero);
 		preguntar(turno, &f, &c);
 		if  (tablero[f][c] == ' '){
 			tablero[f][c] = simbolo[turno % 2];
@@ -86,5 +86,7 @@ int main(){
 		comprobar(turno, tablero);
 		
 	}while (turno < 9 && !finish);
+	printf("Empate!! Ninguno gana!!\n");
+
 	return EXIT_SUCCESS;
 }
