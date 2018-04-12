@@ -18,11 +18,15 @@ void limpiar(char tablero[N][N]){
 
 void imprimir(char tablero[N][N]){
     system("clear");
+    printf("\n");
+    system("toilet -fpagga 3enRaya");
+    printf("\n");
     for(int f=0; f<N; f++){
+        printf("\t");
         for (int c=0; c<N; c++)
             printf(" %c %c", tablero[f][c], c !=2 ? '|' : ' ');
         if (f !=2)
-            printf("\n---+---+---\n");
+            printf("\n\t---+---+---\n");
     }
     printf("\n");
 }
