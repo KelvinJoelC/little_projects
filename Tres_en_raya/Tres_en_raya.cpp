@@ -32,9 +32,9 @@ void imprimir(char tablero[N][N]){
 }
 
 void preguntar(int turno, int *f,int  *c){
-
-    printf("Jugador %i: \n", turno % 2 + 1);
-    printf("Introduce las coordenadas: fila,columna x,y del 0-2 (%c): ",simbolo[turno % 2]);
+    printf("\n");
+    printf("Jugador %i ( %c ): \n", turno % 2 + 1, simbolo[turno % 2]);
+    printf("Introduce las coordenadas: fila,columna x,y del 0-2: ");
     scanf(" %i , %i", f, c);
 
 }
